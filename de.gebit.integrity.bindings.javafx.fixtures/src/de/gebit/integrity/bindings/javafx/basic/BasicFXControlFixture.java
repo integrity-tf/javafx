@@ -90,18 +90,20 @@ public class BasicFXControlFixture extends AbstractFXControlFixture {
 
 	}
 
-	private void selectComboBox(final String aConrtrolId, final Integer anIdx, final ComboBox controlObject) {
+	@SuppressWarnings("rawtypes")
+    private void selectComboBox(final String aConrtrolId, final Integer anIdx, final ComboBox controlObject) {
 		ObservableList<?> items = ((ComboBox<?>) controlObject).getItems();
 		final Object objToSelect = items.get(anIdx);
 		doInFXThread(new FXRunnable() {
-			@Override
+            @Override
 			public void doInFXThread() {
 				controlObject.setValue(objToSelect);
 			}
 		});
 	}
 
-	private void selectChoiceBox(final String aConrtrolId, final Integer anIdx, final ChoiceBox controlObject) {
+	@SuppressWarnings("rawtypes")
+    private void selectChoiceBox(final String aConrtrolId, final Integer anIdx, final ChoiceBox controlObject) {
 		ObservableList<?> items = ((ChoiceBox<?>) controlObject).getItems();
 		final Object objToSelect = items.get(anIdx);
 		doInFXThread(new FXRunnable() {
@@ -112,7 +114,8 @@ public class BasicFXControlFixture extends AbstractFXControlFixture {
 		});
 	}
 	
-	private void selectListView(final String aConrtrolId, final Integer anIdx, final ListView controlObject) {
+	@SuppressWarnings("rawtypes")
+    private void selectListView(final String aConrtrolId, final Integer anIdx, final ListView controlObject) {
 		doInFXThread(new FXRunnable() {
 			@Override
 			public void doInFXThread() {
@@ -121,7 +124,8 @@ public class BasicFXControlFixture extends AbstractFXControlFixture {
 		});
 	}
 	
-	private void selectTableView(final String aConrtrolId, final Integer anIdx, final TableView controlObject) {
+	@SuppressWarnings("rawtypes")
+    private void selectTableView(final String aConrtrolId, final Integer anIdx, final TableView controlObject) {
 		doInFXThread(new FXRunnable() {
 			@Override
 			public void doInFXThread() {
@@ -185,7 +189,8 @@ public class BasicFXControlFixture extends AbstractFXControlFixture {
 
 			doInFXThread(new FXRunnable() {
 
-				@Override
+				@SuppressWarnings("rawtypes")
+                @Override
 				public void doInFXThread() {
 					if (controlObject instanceof ComboBox) {
 						selectedItem[0] = ((ComboBox<?>) controlObject).getSelectionModel().getSelectedItem();
@@ -219,12 +224,9 @@ public class BasicFXControlFixture extends AbstractFXControlFixture {
 
 				doInFXThread(new FXRunnable() {
 
-					@Override
+                    @Override
 					public void doInFXThread() {
-						if (controlObject instanceof ComboBox) {
-							ComboBox tv = ((ComboBox<?>) controlObject);
-							ObservableList items = tv.getItems();
-							boolean contains2 = items.contains(aItem);			
+						if (controlObject instanceof ComboBox) {			
 							contains[0] = ((ComboBox<?>) controlObject).getItems().contains(aItem);
 						} else if (controlObject instanceof ChoiceBox) {
 							contains[0] = ((ChoiceBox<?>) controlObject).getItems().contains(aItem);
