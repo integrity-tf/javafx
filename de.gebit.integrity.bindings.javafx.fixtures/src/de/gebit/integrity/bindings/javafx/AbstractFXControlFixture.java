@@ -10,6 +10,10 @@ import javafx.stage.Window;
 
 public class AbstractFXControlFixture {
 
+    /**
+     * Synchronizes between java fx thread and the current test thread.
+     * @param runn
+     */
 	protected void doInFXThread(final FXRunnable runn) {
 		final Synchronizer sync = new Synchronizer();
 
@@ -32,12 +36,24 @@ public class AbstractFXControlFixture {
 		}
 	}
 
-	protected Object findComponentOfType(String anId, Class aClass) {
+	/**
+	 * Finds a component of the given class type.
+	 * @param anId
+	 * @param aClass
+	 * @return
+	 */
+	protected Object findComponentOfType(String anId, @SuppressWarnings("rawtypes") Class aClass) {
 		Parent root = findPrimaryRoot();
 		return findNode(anId, root, aClass);
 	}
 	
-	protected Object findComponentOfTypeWithException(String anId, Class aClass) {
+	/**
+	 * Finds a component of the given class type, returns an exception if it could not find the component.
+	 * @param anId
+	 * @param aClass
+	 * @return
+	 */
+	protected Object findComponentOfTypeWithException(String anId, @SuppressWarnings("rawtypes") Class aClass) {
 	    Object control = findComponentOfType(anId, aClass);
 	    if (control == null) {
             throw new IllegalArgumentException("Control with id " + anId + " not found!");
@@ -59,6 +75,11 @@ public class AbstractFXControlFixture {
 		return findComponentOfType(anId, null);
 	}
 
+	/**
+	 * Finds the primary stage by checking the windows title.
+	 * @param aTitle
+	 * @return
+	 */
 	protected Stage findPrimaryStageByTitle(final String aTitle) {
 		return findPrimaryStage(new StageDecider() {
 
@@ -69,6 +90,10 @@ public class AbstractFXControlFixture {
 		});
 	}
 
+	/**
+	 * Finds the primary stage by checking whether a window is currently shown.
+	 * @return
+	 */
 	protected Stage findPrimaryStageByOpenedWindow() {
 		return findPrimaryStage(new StageDecider() {
 
@@ -79,6 +104,11 @@ public class AbstractFXControlFixture {
 		});
 	}
 
+	/**
+	 * Finds the primary stage of this JavaFX container.
+	 * @param sd a decider that checks whether a stage is a primary stage.
+	 * @return
+	 */
 	protected Stage findPrimaryStage(StageDecider sd) {
 		Iterator<Window> windows = Window.impl_getWindows();
 		while (windows.hasNext()) {
@@ -103,7 +133,8 @@ public class AbstractFXControlFixture {
 	 * @param aParent
 	 * @return
 	 */
-	protected Node findNode(String anId, Parent aParent, Class aClass) {
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+    protected Node findNode(String anId, Parent aParent, Class aClass) {
 		for (Node n : aParent.getChildrenUnmodifiable()) {
 
 			if (anId.equals(n.getId())) {

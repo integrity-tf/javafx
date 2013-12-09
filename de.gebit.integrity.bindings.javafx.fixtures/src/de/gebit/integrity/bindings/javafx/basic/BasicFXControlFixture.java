@@ -19,6 +19,9 @@ import de.gebit.integrity.bindings.javafx.FXRunnable;
 import de.gebit.integrity.fixtures.FixtureMethod;
 import de.gebit.integrity.fixtures.FixtureParameter;
 
+/**
+ * Used to control default components.
+ */
 public class BasicFXControlFixture extends AbstractFXControlFixture {
 
 	/**

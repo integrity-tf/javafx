@@ -7,6 +7,9 @@ import de.gebit.integrity.bindings.javafx.AbstractFXControlFixture;
 import de.gebit.integrity.fixtures.FixtureMethod;
 import de.gebit.integrity.fixtures.FixtureParameter;
 
+/**
+ * Supports different waits.
+ */
 public class FXWaitFixture  extends AbstractFXControlFixture {
 	
 	@FixtureMethod

@@ -41,6 +41,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+/**
+ * JavaFX Class to test FX Fixtures.
+ * This includes of a lot of different java fx standard components.
+ *
+ */
 public class MyBasicTestApp extends Application {
 
 	public static Stage primaryStage;

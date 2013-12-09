@@ -6,6 +6,9 @@ import de.gebit.integrity.bindings.javafx.FXRunnable;
 import de.gebit.integrity.fixtures.FixtureMethod;
 import de.gebit.integrity.fixtures.FixtureParameter;
 
+/**
+ * Used to control titled Panes.
+ */
 public class FXTitledPaneFixture extends AbstractFXControlFixture {
 
 	@FixtureMethod
